@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Contraseñas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Generador de Contraseñas</h1>
+        <p>¡Crea tu contraseña personalizada!</p>
+    </header>
+
+    <main>
+        <section class="options">
+            <h2>Opciones de caracteres</h2>
+            <form id="characterOptions">
+                <div class="option">
+                    <input type="checkbox" id="mayusculas" checked>
+                    <label for="mayusculas">Mayúsculas</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="minusculas" checked>
+                    <label for="minusculas">Minúsculas</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="numeros" checked>
+                    <label for="numeros">Números</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="caracteresEspeciales" checked>
+                    <label for="caracteresEspeciales">Caracteres especiales</label>
+                </div>
+            </form>
+        </section>
+
+        <section class="length">
+            <h2>Longitud de la contraseña</h2>
+            <input type="number" id="longitud" min="6" max="32" value="12">
+        </section>
+
+        <button id="generarContraseña">Generar Contraseña</button>
+
+        <div id="resultado" class="resultado"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 TuNombre. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
