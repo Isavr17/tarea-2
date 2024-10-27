@@ -3,46 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de Contraseñas</title>
+    <title>Formulario Tarea</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <header>
-        <h1>Generador de Contraseñas</h1>
-        <p>¡Crea tu contraseña personalizada!</p>
-    </header>
-
     <main>
-        <section class="options">
-            <h2>Opciones de caracteres</h2>
-            <form id="characterOptions">
-                <div class="option">
-                    <input type="checkbox" id="mayusculas" checked>
-                    <label for="mayusculas">Mayúsculas</label>
-                </div>
-                <div class="option">
-                    <input type="checkbox" id="minusculas" checked>
-                    <label for="minusculas">Minúsculas</label>
-                </div>
-                <div class="option">
-                    <input type="checkbox" id="numeros" checked>
-                    <label for="numeros">Números</label>
-                </div>
-                <div class="option">
-                    <input type="checkbox" id="caracteresEspeciales" checked>
-                    <label for="caracteresEspeciales">Caracteres especiales</label>
-                </div>
-            </form>
+        <section class="formulario">
+            <h1>Nuevo Telefono</h1>
+            <p class="descripcion">Especificaciones del Dispositivo</p>
+            <div class="pregunta-texto">
+                <label for="texto-sencilla" class="etiqueta-pregunta">Dinos tu Nombre:</label>
+                <input type="text" id="texto-sencilla" name="texto-sencilla" class="texto-sencilla" required>
+            </div>
+
+            <div class="pregunta-opcion-multiple">
+                <legend class="legenda">Memoria Ram:</legend>
+                <ul class="opciones-lista">
+                    <li><label><input type="radio" name="opcion-multiple" value="op1" class="radio-opcion" required> 6 gb</label></li>
+                    <li><label><input type="radio" name="opcion-multiple" value="op2" class="radio-opcion" required> 8 gb</label></li>
+                    <li><label><input type="radio" name="opcion-multiple" value="op3" class="radio-opcion" required> 12 gb</label></li>
+                </ul>
+            </div>
+            <fieldset class="incisos-redondos">
+                <legend class="legenda">Memoria interna:</legend>
+                <ul class="incisos-lista">
+                    <li><label><input type="radio" name="incisos-redondos" value="inciso1" class="radio-inciso" required> 64 gb</label></li>
+                    <li><label><input type="radio" name="incisos-redondos" value="inciso2" class="radio-inciso" required> 128 gb</label></li>
+                    <li><label><input type="radio" name="incisos-redondos" value="inciso3" class="radio-inciso" required> 256 gb</label></li>
+                </ul>
+            </fieldset>
+            <div class="pregunta-cuadro">
+                <legend class="legenda">Marca:</legend>
+                <ul class="cuadro-lista">
+                    <li>
+                        <label for="iphone">iPhone</label>
+                        <input type="checkbox" id="iphone" name="marca" value="iPhone" required>
+                    </li>
+                    <li>
+                        <label for="samsung">Samsung</label>
+                        <input type="checkbox" id="samsung" name="marca" value="Samsung" required>
+                    </li>
+                    <li>
+                        <label for="huawei">Huawei</label>
+                        <input type="checkbox" id="huawei" name="marca" value="Huawei" required>
+                    </li>
+                </ul>
+            </div>            
+            <legend class="legenda">Añade tus observaciones:</legend>
+            <textarea id="area-texto" name="area-texto" class="area-texto" required></textarea>
+            
+            <div class="enviar-formulario">
+                <button type="submit" class="btn-enviar">Enviar Formulario</button>
+            </div>
         </section>
-
-        <section class="length">
-            <h2>Longitud de la contraseña</h2>
-            <input type="number" id="longitud" min="6" max="32" value="12">
-        </section>
-
-        <button id="generarContraseña">Generar Contraseña</button>
-
-        <div id="resultado" class="resultado"></div>
     </main>
 
     <script src="script.js"></script>

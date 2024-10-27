@@ -1,47 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const generarContraseñaButton = document.getElementById('generarContraseña');
-    const resultadoDiv = document.getElementById('resultado');
+    const form = document.querySelector('.formulario');
+    const submitButton = form.querySelector('.btn-enviar');
 
-    generarContraseñaButton.addEventListener('click', generarContraseña);
+    submitButton.addEventListener('click', function(e) {
+        e.preventDefault();
 
-    function generarContraseña() {
-        let mayusculas = document.getElementById('mayusculas').checked;
-        let minusculas = document.getElementById('minusculas').checked;
-        let numeros = document.getElementById('numeros').checked;
-        let caracteresEspeciales = document.getElementById('caracteresEspeciales').checked;
-        let longitud = parseInt(document.getElementById('longitud').value);
+        const fields = form.querySelectorAll(':required');
+        let isValid = true;
 
-        if (!mayusculas && !minusculas && !numeros && !caracteresEspeciales) {
-            mostrarMensajeError();
-            return;
+        fields.forEach(field => {
+            if (!field.checkValidity()) {
+                isValid = false;
+                console.log(`El campo ${field.name} no es válido`);
+            }
+        });
+
+        if (!isValid) {
+            alert('Por favor, completa todos los campos obligatorios');
+        } else {
+            // logica
+            console.log('Formulario válido, se puede enviar');
         }
-
-        const caracteres = [];
-        if (mayusculas) caracteres.push(...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''));
-        if (minusculas) caracteres.push(...'abcdefghijklmnopqrstuvwxyz'.split(''));
-        if (numeros) caracteres.push(...'0123456789'.split(''));
-        if (caracteresEspeciales) caracteres.push(...'!@#$%^&*()_+-={}[]|\\:;<>,.?/'.split(''));
-
-        const contraseña = generarStringAleatoria(caracteres, longitud);
-        resultadoDiv.textContent = contraseña;
-    }
-
-    function generarStringAleatoria(caracteres, longitud) {
-        let resultado = '';
-        for (let i = 0; i < longitud; i++) {
-            resultado += caracteres[Math.floor(Math.random() * caracteres.length)];
-        }
-        return resultado;
-    }
-
-    function mostrarMensajeError() {
-        const errorElement = document.createElement('p');
-        errorElement.textContent = "Por favor, seleccione al menos una opción.";
-        errorElement.style.color = 'red';
-        resultadoDiv.parentNode.insertBefore(errorElement, resultadoDiv.nextSibling);
-        
-        setTimeout(function() {
-            errorElement.remove();
-        }, 3000);
-    }
+    });
 });
